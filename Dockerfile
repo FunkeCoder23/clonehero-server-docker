@@ -1,5 +1,5 @@
 FROM alpine:latest
-ARG CH_VERSION=v1.1.0.4261-PTB
+ARG CH_VERSION=V1.0.0.4080 
 
 RUN apk add --no-cache \
     libgcc \
