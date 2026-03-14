@@ -1,4 +1,4 @@
-ENV CH_VERSION=v1.1.0.4261-PTB
+ARG CH_VERSION=v1.1.0.4261-PTB
 FROM alpine:latest
 
 RUN apk add --no-cache \
@@ -12,4 +12,4 @@ RUN wget -qO- https://github.com/clonehero-game/releases/releases/download/${CH_
     chmod +x Server
 COPY /init /init
 
-CMD ["/init/init.sh"]
+ENTRYPOINT  ["/init/init.sh"]
