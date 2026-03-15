@@ -1,6 +1,6 @@
 services:
   clonehero-server:
-    build: .
+    build: ./Docker
     container_name: clonehero-server
     env_file:
       - server.env
