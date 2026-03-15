@@ -1,5 +1,6 @@
 services:
   clonehero-server:
+    image: ghcr.io/funkecoder23/clonehero-server-docker:latest
     build: ./Docker
     container_name: clonehero-server
     env_file:
