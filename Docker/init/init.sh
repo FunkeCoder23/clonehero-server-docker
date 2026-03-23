@@ -1,6 +1,6 @@
 #!/bin/ash
-
-test ! $SERVER_NAME && echo "SERVER_NAME must be set" && exit 1
+set -euo pipefail
+[ ! $SERVER_NAME  ] && echo "SERVER_NAME must be set" && exit 1
 
 if [ ! $PASSWORD  ]; then
     PASS_OPT="--nopass"
@@ -15,4 +15,4 @@ SERVER_NAME_OPT="--name $SERVER_NAME"
 ADDRESS_OPT="--address $ADDRESS"
 PORT_OPT="--port $PORT"
 
-/app/Server $SERVER_NAME_OPT $PASS_OPT $PORT_OPT $ADDRESS_OPT
+exec /app/Server $SERVER_NAME_OPT $PASS_OPT $PORT_OPT $ADDRESS_OPT

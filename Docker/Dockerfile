@@ -5,12 +5,16 @@ ARG CH_VERSION=v1.1.0.4261-PTB
 RUN apk add --no-cache \
     libgcc \
     libstdc++ \
+    libarchive-tools \
     && rm -rf /var/cache/apk/*
 
-WORKDIR /app
+WORKDIR /tmp
 RUN wget -qO- https://github.com/clonehero-game/releases/releases/download/${CH_VERSION}/CloneHero-StandaloneServer.zip | \
-    unzip -j -  CloneHero-StandaloneServer/linux-musl/Server && \
-    chmod +x Server
+    bsdtar -xvf- 
+WORKDIR /app
+RUN find /tmp -name "linux-musl" -exec chmod +x {}/Server \; -exec mv {}/Server /app/ \; && \
+    rm -rf /tmp/*
+    
 COPY /init /init
 WORKDIR /data
 
